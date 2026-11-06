@@ -8,6 +8,7 @@ const images =
     : {};
 
 const isStaticExport = process.env.OUTPUT_EXPORT === "1";
+const svgrLoader = require.resolve("./scripts/svgr-loader");
 
 const nextConfig = {
   output: isStaticExport ? "export" : undefined,
@@ -20,23 +21,21 @@ const nextConfig = {
         as: "*.js",
       },
       "*.svg": {
-        loaders: ["@svgr/webpack"],
+        loaders: [svgrLoader],
         as: "*.js",
       },
     },
   },
   webpack: (config) => {
     config.module.rules.push(
-      ...[
-        {
-          test: /\.yml$/,
-          use: "yaml-loader",
-        },
-        {
-          test: /\.svg$/,
-          use: "@svgr/webpack",
-        },
-      ],
+      {
+        test: /\.yml$/,
+        use: "yaml-loader",
+      },
+      {
+        test: /\.svg$/,
+        use: svgrLoader,
+      },
     );
 
     return config;
