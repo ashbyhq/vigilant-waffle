@@ -15,7 +15,7 @@ from [this template](https://github.com/wutali/nextjs-netlify-blog-template)).
 
 ## Local Development
 
-We use node 18.12+ for local development. If you don't have this locally then
+We use Node 24 for local development. If you don't have this locally then
 we recommend using [nvm](https://github.com/nvm-sh/nvm) to manage your node versions.
 
 We also use yarn to manage dependencies which can be installed with

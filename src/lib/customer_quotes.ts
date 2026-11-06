@@ -37,13 +37,11 @@ export function fetchAllCustomerQuotes() {
   return customerQuoteCollection.getCollection();
 }
 
-export function fetchCustomerQuotesPerLocation(
-  location: CustomerQuoteLocation
-) {
+export function fetchCustomerQuotesPerLocation(location: CustomerQuoteLocation) {
   const allCustomerQuotes = customerQuoteCollection.getCollection();
   const quotesPerLocation = config[location];
   const filteredQuotes = allCustomerQuotes.filter((quote) =>
-    quotesPerLocation.includes(quote.slug)
+    quotesPerLocation.includes(quote.slug),
   );
   return filteredQuotes.sort((a, b) => {
     let aIndex = quotesPerLocation.indexOf(a.slug);

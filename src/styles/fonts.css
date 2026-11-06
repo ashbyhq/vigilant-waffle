@@ -1,20 +1,20 @@
 @font-face {
   font-display: swap;
-  font-family: "TTNormsPro";
+  font-family: TTNormsPro;
   font-weight: 100 900;
   src: url("/fonts/tt_norms_pro_variable-subset.woff2") format("woff2-variations");
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Signifier";
+  font-family: Signifier;
   font-weight: 400;
   src: url("/fonts/signifier-regular-subset.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Signifier";
+  font-family: Signifier;
   font-style: italic;
   font-weight: 400;
   src: url("/fonts/signifier-regular-italic-subset.woff2") format("woff2");

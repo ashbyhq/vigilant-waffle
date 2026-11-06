@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 import matter from "gray-matter";
 import { CustomerProfile } from "./customer_profile";
 import camelCase from "just-camel-case";
@@ -52,7 +52,7 @@ interface SluggedEntry {
   slug: string;
 }
 
-class CmsFolderCollection<T extends SluggedEntry> {
+export class CmsFolderCollection<T extends SluggedEntry> {
   collectionName: string;
   configPath: string;
   config: CmsConfig;
@@ -89,15 +89,13 @@ class CmsFolderCollection<T extends SluggedEntry> {
    * Unless a custom tranform is set on the class, these will always be called regardless of depth
    */
   defaultTransformByCollection = {
-    [FolderCollection.CustomerProfile]: (data: {
-      [K: string]: any;
-    }): CustomerProfile => {
+    [FolderCollection.CustomerProfile]: (data: { [K: string]: any }): CustomerProfile => {
       data.product =
         data.product === "all_in_one"
           ? "Ashby All-In-One"
           : data.product === "analytics"
-          ? "Ashby Analytics"
-          : null;
+            ? "Ashby Analytics"
+            : null;
 
       return Object.entries(data).reduce((transformedData, [key, value]) => {
         transformedData[camelCase(key)] = value;
@@ -106,9 +104,7 @@ class CmsFolderCollection<T extends SluggedEntry> {
       }, {} as CustomerProfile);
     },
 
-    [FolderCollection.CustomerQuote]: (data: {
-      [K: string]: any;
-    }): CustomerQuote => {
+    [FolderCollection.CustomerQuote]: (data: { [K: string]: any }): CustomerQuote => {
       return Object.entries(data).reduce((transformedData, [key, value]) => {
         transformedData[camelCase(key)] = value;
 
@@ -171,8 +167,7 @@ class CmsFolderCollection<T extends SluggedEntry> {
 
     const fileNames = fs.readdirSync(this.collection.folder);
 
-    const collectionFileExtension =
-      this.collection.format === "frontmatter" ? ".mdx" : ".yml";
+    const collectionFileExtension = this.collection.format === "frontmatter" ? ".mdx" : ".yml";
 
     const collectionData = fileNames
       .filter((fileName) => {
@@ -189,9 +184,7 @@ class CmsFolderCollection<T extends SluggedEntry> {
         return this.loadDataFromFile(fileName);
       });
 
-    this.collectionCache = new Map(
-      collectionData.map((data) => [data.slug, data])
-    );
+    this.collectionCache = new Map(collectionData.map((data) => [data.slug, data]));
 
     return this.collectionCache;
   }
@@ -251,9 +244,9 @@ class CmsFolderCollection<T extends SluggedEntry> {
     return this.transform
       ? this.transform(entry)
       : this.defaultTransformByCollection[this.collectionName]
-      ? this.defaultTransformByCollection[this.collectionName](entry)
-      : // If we're not transforming, we can assume the data loaded matches the type
-        (entry as T);
+        ? this.defaultTransformByCollection[this.collectionName](entry)
+        : // If we're not transforming, we can assume the data loaded matches the type
+          (entry as T);
   }
 
   getCollection() {

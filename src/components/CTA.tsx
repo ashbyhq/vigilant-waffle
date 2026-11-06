@@ -68,17 +68,10 @@ interface RequestDemoButtonProps {
   perserveParams?: boolean;
 }
 
-const RequestDemoButton = ({
-  buttonProps,
-  perserveParams,
-}: RequestDemoButtonProps) => {
+const RequestDemoButton = ({ buttonProps, perserveParams }: RequestDemoButtonProps) => {
   return (
     <NextLink href={routes.requestDemo.slug} perserveParams={perserveParams}>
-      <Button
-        appearance={"primary"}
-        size={{ "@desktopAndUp": "4" }}
-        {...buttonProps}
-      >
+      <Button appearance={"primary"} size={{ "@desktopAndUp": "4" }} {...buttonProps}>
         {routes.requestDemo.label}
       </Button>
     </NextLink>

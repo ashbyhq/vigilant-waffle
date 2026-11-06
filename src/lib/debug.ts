@@ -2,8 +2,7 @@ import { NOOP } from "../utils/types";
 
 export const IS_PROD = process.env.NODE_ENV !== "development";
 /* eslint-disable no-console */
-const NO_IN_BROWSER_DEBUG =
-  process.env.NEXT_PUBLIC_IN_BROWSER_DEBUG !== "true" && IS_PROD;
+const NO_IN_BROWSER_DEBUG = process.env.NEXT_PUBLIC_IN_BROWSER_DEBUG !== "true" && IS_PROD;
 const prefix = "[ASHBY]";
 
 // Defining these in this `bind` style to preserve the line number of the calling site

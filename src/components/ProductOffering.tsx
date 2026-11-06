@@ -85,11 +85,7 @@ export const ProductOffering = ({
   height,
   slug,
 }: ProductOfferingContent) => (
-  <NextLink
-    href={slug}
-    passHref
-    aria-label={`Learn more about ${product} ${segment}`}
-  >
+  <NextLink href={slug} passHref aria-label={`Learn more about ${product} ${segment}`}>
     <Stack.V
       spacing={{
         "@tablet": "4",

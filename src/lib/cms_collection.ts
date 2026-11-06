@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 import matter from "gray-matter";
 import camelCase from "just-camel-case";
 
@@ -22,9 +22,7 @@ enum FileCollection {
 /**
  * To prevent circular refrences, something may not be able to be eager loaded
  */
-const DO_NOT_EAGER_LOAD: Array<FolderCollection | FileCollection> = [
-  FileCollection.Meta,
-];
+const DO_NOT_EAGER_LOAD: Array<FolderCollection | FileCollection> = [FileCollection.Meta];
 
 type CmsData = { [K: string]: any };
 
@@ -111,9 +109,7 @@ abstract class CmsCollection<T extends SluggedEntry> {
 
   // How to transform data saved in CMS files into T
   defaultTransformByCollection: {
-    [key in FolderCollection | FileCollection]?: (data: {
-      [K: string]: any;
-    }) => T;
+    [key in FolderCollection | FileCollection]?: (data: { [K: string]: any }) => T;
   };
 
   /**
@@ -121,11 +117,7 @@ abstract class CmsCollection<T extends SluggedEntry> {
    */
   transform: ((data: CmsData) => T) | undefined;
 
-  constructor({
-    collection,
-  }: {
-    collection: FolderCollection | FileCollection;
-  }) {
+  constructor({ collection }: { collection: FolderCollection | FileCollection }) {
     this.collectionName = collection;
     this.configPath = path.join(process.cwd(), CMS_CONFIG_PATH);
     this.config = this.loadConfig();
@@ -133,9 +125,7 @@ abstract class CmsCollection<T extends SluggedEntry> {
 
   // Two methods exposed in bot FileLoader and FolderLoader. Used to get transformed and loaded data out of a class
   abstract loadCollectionData(): CmsFolder | CmsFile;
-  abstract buildCollectionEntryMap(
-    slugs: string | string[]
-  ): Map<string, CmsData>;
+  abstract buildCollectionEntryMap(slugs: string | string[]): Map<string, CmsData>;
 
   private loadConfig() {
     const fileContents = fs.readFileSync(this.configPath, "utf8");
@@ -151,7 +141,7 @@ abstract class CmsCollection<T extends SluggedEntry> {
   buildRelationshipList(fields: CmsField[]) {
     const determineType = (collectionName: string) => {
       const relatedCollection = this.config.collections.find(
-        (collection) => collection.name === collectionName
+        (collection) => collection.name === collectionName,
       );
 
       if (this.isFolderCollection(relatedCollection)) {
@@ -187,9 +177,9 @@ abstract class CmsCollection<T extends SluggedEntry> {
     return this.transform
       ? this.transform(entry)
       : this.defaultTransformByCollection?.[this.collectionName]
-      ? this.defaultTransformByCollection[this.collectionName](entry)
-      : // If we're not transforming, we can assume the data loaded matches the type
-        (entry as T);
+        ? this.defaultTransformByCollection[this.collectionName](entry)
+        : // If we're not transforming, we can assume the data loaded matches the type
+          (entry as T);
   }
 
   transformToCamelCase(data: CmsData) {
@@ -220,10 +210,8 @@ abstract class CmsCollection<T extends SluggedEntry> {
   }
 }
 
-class CmsFileCollection<
-  T extends SluggedEntry
-> extends CmsCollection<T> {
-  collection: CmsFile;
+class CmsFileCollection<T extends SluggedEntry> extends CmsCollection<T> {
+  declare collection: CmsFile;
   fileName: string;
   collectionFileConfig: CmsFile["files"][number];
 
@@ -246,9 +234,7 @@ class CmsFileCollection<
     this.transform = transform;
     this.collection = this.loadCollectionData();
     this.fileName = fileName;
-    this.collectionFileConfig = this.collection.files.find(
-      (file) => file.name === this.fileName
-    );
+    this.collectionFileConfig = this.collection.files.find((file) => file.name === this.fileName);
 
     this.collectionRelations = this.findCollectionRelations();
 
@@ -271,9 +257,7 @@ class CmsFileCollection<
       throw new Error(`Cannot find config for ${this.collectionName}!`);
     }
     if (this.isFolderCollection(collectionConfig)) {
-      throw new Error(
-        "Folder collections cannot be part of a CmsFileCollection"
-      );
+      throw new Error("Folder collections cannot be part of a CmsFileCollection");
     }
 
     return collectionConfig;
@@ -283,9 +267,7 @@ class CmsFileCollection<
    * Builds a map of all of every entry in the collection. Eager loads relations as sub-collections
    */
   buildCollectionEntryMap(slugs?: string | string[]) {
-    const collectionConfig = this.collection.files.find(
-      (file) => file.name === this.fileName
-    );
+    const collectionConfig = this.collection.files.find((file) => file.name === this.fileName);
 
     const collectionData = fs.readFileSync(collectionConfig.file, "utf8");
     const data = yaml.load(collectionData, {
@@ -329,9 +311,7 @@ class CmsFileCollection<
       });
     }
 
-    this.collectionCache = new Map(
-      filteredData.map((entry) => [entry.slug, entry])
-    );
+    this.collectionCache = new Map(filteredData.map((entry) => [entry.slug, entry]));
 
     return this.collectionCache;
   }
@@ -369,10 +349,8 @@ class CmsFileCollection<
   }
 }
 
-export class CmsFolderCollection<
-  T extends SluggedEntry
-> extends CmsCollection<T> {
-  collection: CmsFolder;
+export class CmsFolderCollection<T extends SluggedEntry> extends CmsCollection<T> {
+  declare collection: CmsFolder;
 
   constructor({
     collection,
@@ -401,8 +379,8 @@ export class CmsFolderCollection<
           data.product === "all_in_one"
             ? "Ashby All-In-One"
             : data.product === "analytics"
-            ? "Ashby Analytics"
-            : null;
+              ? "Ashby Analytics"
+              : null;
 
         return this.transformToCamelCase(data);
       },
@@ -441,9 +419,7 @@ export class CmsFolderCollection<
       throw new Error(`Cannot find config for ${this.collectionName}!`);
     }
     if (!this.isFolderCollection(collectionConfig)) {
-      throw new Error(
-        "File collections cannot be part of a CmsFolderCollection"
-      );
+      throw new Error("File collections cannot be part of a CmsFolderCollection");
     }
 
     return collectionConfig;
@@ -466,8 +442,7 @@ export class CmsFolderCollection<
 
     const fileNames = fs.readdirSync(this.collection.folder);
 
-    const collectionFileExtension =
-      this.collection.format === "frontmatter" ? ".mdx" : ".yml";
+    const collectionFileExtension = this.collection.format === "frontmatter" ? ".mdx" : ".yml";
 
     const collectionData = fileNames
       .filter((fileName) => {
@@ -484,9 +459,7 @@ export class CmsFolderCollection<
         return this.loadDataFromFile(fileName);
       });
 
-    this.collectionCache = new Map(
-      collectionData.map((data) => [data.slug, data])
-    );
+    this.collectionCache = new Map(collectionData.map((data) => [data.slug, data]));
 
     return this.collectionCache;
   }

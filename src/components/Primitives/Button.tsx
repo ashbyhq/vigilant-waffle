@@ -200,23 +200,11 @@ export type ButtonProps = {
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      iconBefore: IconBefore,
-      iconAfter: IconAfter,
-      loading,
-      size,
-      children,
-      ...buttonProps
-    },
-    forwardRef
+    { iconBefore: IconBefore, iconAfter: IconAfter, loading, size, children, ...buttonProps },
+    forwardRef,
   ) => {
     return (
-      <StyledButton
-        ref={forwardRef}
-        size={size}
-        disabled={loading}
-        {...buttonProps}
-      >
+      <StyledButton ref={forwardRef} size={size} disabled={loading} {...buttonProps}>
         <Stack.H align={"center"} justify={"center"}>
           {loading ? (
             <Spinner
@@ -233,7 +221,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         </Stack.H>
       </StyledButton>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

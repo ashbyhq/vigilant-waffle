@@ -74,22 +74,15 @@ const StyledSpinner = styled("div", {
 
 type SpinnerProps = React.ComponentPropsWithoutRef<typeof StyledSpinner>;
 
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  (props, forwardRef) => {
-    return (
-      <StyledSpinner
-        ref={forwardRef}
-        aria-label="Loading..."
-        role="progressbar"
-        {...props}
-      >
-        <svg className="spinner_outer" x="0" y="0" viewBox="0 0 150 150">
-          <circle className={"spinner_track"} cx="75" cy="75" r="60" />
-          <circle className={"spinner_inner"} cx="75" cy="75" r="60" />
-        </svg>
-      </StyledSpinner>
-    );
-  }
-);
+export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>((props, forwardRef) => {
+  return (
+    <StyledSpinner ref={forwardRef} aria-label="Loading..." role="progressbar" {...props}>
+      <svg className="spinner_outer" x="0" y="0" viewBox="0 0 150 150">
+        <circle className={"spinner_track"} cx="75" cy="75" r="60" />
+        <circle className={"spinner_inner"} cx="75" cy="75" r="60" />
+      </svg>
+    </StyledSpinner>
+  );
+});
 
 Spinner.displayName = "spinner";

@@ -1,82 +1,89 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Embedded Job Board Test</title>
 
-  <title>Embedded Job Board Test</title>
+    <!-- This is some custom styling for the site that surround the application. -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/job_board_example_css/example-job-site-styles.css"
+    />
+  </head>
 
-  <!-- This is some custom styling for the site that surround the application. -->
-  <link rel="stylesheet" type="text/css"
-    href="/job_board_example_css/example-job-site-styles.css">
-</head>
-
-<body>
-  <script>
-    function loadMyJobPosting(jobPostingId) {
-      // The load function can be called in any way, such as in a SPA.
-      // Here, `loadMyJobPosting` is a simple function being called by button clicks below.
-      window.__Ashby.iFrame().load({
-        jobPostingId
-      });
-    }
-  </script>
-
-  <!-- This header content is to show that the embedded content should go directly alongside your other custom
-        job board content -->
-  <div style="text-align:center;">
-    <h1>My Orange Job Board</h1>
-    <p><i>This example has been hard-coded to an example Ashby instance.<br>Click the buttons below to load each posting.</i></p>
-    <div class="button-container">
-      <button
-        onclick="loadMyJobPosting('dd883672-4381-4aed-a28d-09a2af002772')">
-        First Posting
-      </button>
-      <button
-        onclick="loadMyJobPosting('66bded37-375d-4ecf-98ed-5aea60c36e61')">
-        Second Posting
-      </button>
-    </div>
-  </div>
-
-  <!-- This is the target for the embedded iframe -->
-  <div id="ashby_embed" class="application-form-embed-container"></div>
-
-  <script>
-    // This will define the initial settings for the Ashby embed script.
-    // The load function can take any setting, so that these settings could change each time the job board is loaded.
-    window.__Ashby = {
-      settings: {
-        ashbyBaseJobBoardUrl: "https://jobs.ashbyhq.com/ashby-embed-demo-org",
-
-        // The accepted display modes are:
-        // "full-job-board": Will allow the user to navigate the full job board, between the list of applications and postings
-        // "application-form-only": Will only show the application of a single job posting. jobPostingId must be set.
-        displayMode: "application-form-only",
-
-        // The initial job posting to render.
-        // If in a SPA, this can be left blank, with autoLoad = false, to prevent the iframe from rendering immediately.
-        jobPostingId: "dd883672-4381-4aed-a28d-09a2af002772",
-        autoLoad: true,
-
-        // Will prevent scrolling of the iFrame on navigation
-        autoScroll: false,
-
-        // Enable verbose logging to the console. This can help for debugging, but should ideally not be used in production.
-        verboseLogging: true,
-
-        // This custom css url will be embedded in the iframe, in addition to any global job board css files you have
-        // added in the Ashby admin. Passing this to the `load` function will allow you to customize css per
-        // application, if needed.
-        customCssUrl: "https://www.ashbyhq.com/job_board_example_css/application-form-only.css",
+  <body>
+    <script>
+      function loadMyJobPosting(jobPostingId) {
+        // The load function can be called in any way, such as in a SPA.
+        // Here, `loadMyJobPosting` is a simple function being called by button clicks below.
+        window.__Ashby.iFrame().load({
+          jobPostingId,
+        });
       }
-    }
-  </script>
+    </script>
 
-  <!-- This is the Ashby script -->
-  <!-- IMPORTANT! For this embedding option, version=2 must be specified. -->
-  <script id="ashby-script" src="https://jobs.ashbyhq.com/ashby-embed-demo-org/embed?version=2"></script>
-</body>
+    <!-- This header content is to show that the embedded content should go directly alongside your other custom
+        job board content -->
+    <div style="text-align: center">
+      <h1>My Orange Job Board</h1>
+      <p>
+        <i
+          >This example has been hard-coded to an example Ashby instance.<br />Click the buttons
+          below to load each posting.</i
+        >
+      </p>
+      <div class="button-container">
+        <button onclick="loadMyJobPosting('dd883672-4381-4aed-a28d-09a2af002772')">
+          First Posting
+        </button>
+        <button onclick="loadMyJobPosting('66bded37-375d-4ecf-98ed-5aea60c36e61')">
+          Second Posting
+        </button>
+      </div>
+    </div>
 
+    <!-- This is the target for the embedded iframe -->
+    <div id="ashby_embed" class="application-form-embed-container"></div>
+
+    <script>
+      // This will define the initial settings for the Ashby embed script.
+      // The load function can take any setting, so that these settings could change each time the job board is loaded.
+      window.__Ashby = {
+        settings: {
+          ashbyBaseJobBoardUrl: "https://jobs.ashbyhq.com/ashby-embed-demo-org",
+
+          // The accepted display modes are:
+          // "full-job-board": Will allow the user to navigate the full job board, between the list of applications and postings
+          // "application-form-only": Will only show the application of a single job posting. jobPostingId must be set.
+          displayMode: "application-form-only",
+
+          // The initial job posting to render.
+          // If in a SPA, this can be left blank, with autoLoad = false, to prevent the iframe from rendering immediately.
+          jobPostingId: "dd883672-4381-4aed-a28d-09a2af002772",
+          autoLoad: true,
+
+          // Will prevent scrolling of the iFrame on navigation
+          autoScroll: false,
+
+          // Enable verbose logging to the console. This can help for debugging, but should ideally not be used in production.
+          verboseLogging: true,
+
+          // This custom css url will be embedded in the iframe, in addition to any global job board css files you have
+          // added in the Ashby admin. Passing this to the `load` function will allow you to customize css per
+          // application, if needed.
+          customCssUrl: "https://www.ashbyhq.com/job_board_example_css/application-form-only.css",
+        },
+      };
+    </script>
+
+    <!-- This is the Ashby script -->
+    <!-- IMPORTANT! For this embedding option, version=2 must be specified. -->
+    <script
+      id="ashby-script"
+      src="https://jobs.ashbyhq.com/ashby-embed-demo-org/embed?version=2"
+    ></script>
+  </body>
 </html>

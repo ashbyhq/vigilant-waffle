@@ -155,7 +155,7 @@ const StyledTriggerWithCaret = React.forwardRef<HTMLButtonElement, any>(
       {children}
       <StyledCaret aria-hidden />
     </StyledTrigger>
-  )
+  ),
 );
 
 const NavigationMenu = StyledMenu;
@@ -173,14 +173,8 @@ const ListItem = styled("div", {
 
 type ContentListItemProps = ChildrenProps & ProductOfferingContent;
 
-const ContentListItem = React.forwardRef<
-  HTMLAnchorElement,
-  ContentListItemProps
->(
-  (
-    { companySize, segment, product, slug, width, height, iconSrc },
-    forwardedRef
-  ) => (
+const ContentListItem = React.forwardRef<HTMLAnchorElement, ContentListItemProps>(
+  ({ companySize, segment, product, slug, width, height, iconSrc }, forwardedRef) => (
     <ListItem css={{ "> a": { width: "100%" } }}>
       <NextLink href={slug} perserveParams css={{ width: "100%" }}>
         <NavigationMenuLink
@@ -203,12 +197,7 @@ const ContentListItem = React.forwardRef<
                   },
                 }}
               >
-                <NextImage
-                  src={iconSrc}
-                  width={width}
-                  height={height}
-                  layout="fixed"
-                />
+                <NextImage src={iconSrc} width={width} height={height} layout="fixed" alt="" />
               </IconBox>
               <Box>
                 <Heading size="3" color="muted">
@@ -224,7 +213,7 @@ const ContentListItem = React.forwardRef<
         </NavigationMenuLink>
       </NextLink>
     </ListItem>
-  )
+  ),
 );
 
 const ProductsList = () => {
@@ -288,16 +277,13 @@ const HiringListItem = React.forwardRef<HTMLAnchorElement, HiringListItemProps>(
                   </Box>
                 )}
               </Stack.H>
-              <Paragraph
-                size="2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
+              <Paragraph size="2" dangerouslySetInnerHTML={{ __html: description }} />
             </Box>
           </Stack.V>
         </NavigationMenuLink>
       </NextLink>
     </ListItem>
-  )
+  ),
 );
 
 const WereHiringList = ({ jobCount }: { jobCount: number | undefined }) => {
@@ -358,9 +344,7 @@ export const NavPopoverMenu = () => {
       <Stack.H spacing="4" align="center">
         <NavigationMenuList css={{ gap: "$4" }}>
           <NavigationMenuItem value="Products">
-            <NavigationMenuTrigger
-              ref={(node) => onNodeUpdate(node, "Products")}
-            >
+            <NavigationMenuTrigger ref={(node) => onNodeUpdate(node, "Products")}>
               Products
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -368,9 +352,7 @@ export const NavPopoverMenu = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem value="Resources">
-            <NavigationMenuTrigger
-              ref={(node) => onNodeUpdate(node, "Resources")}
-            >
+            <NavigationMenuTrigger ref={(node) => onNodeUpdate(node, "Resources")}>
               Resources
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -393,9 +375,7 @@ export const NavPopoverMenu = () => {
             </Box>
           ))}
           <NavigationMenuItem value="We're Hiring">
-            <NavigationMenuTrigger
-              ref={(node) => onNodeUpdate(node, "We're Hiring")}
-            >
+            <NavigationMenuTrigger ref={(node) => onNodeUpdate(node, "We're Hiring")}>
               We're Hiring
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -515,10 +495,7 @@ export const NavMenuMobile = () => {
         {/* <Dialog.DialogOverlay /> */}
         <DialogContent>
           <Stack.V spacing="3">
-            <Stack.V
-              spacing="2"
-              css={{ borderBottom: "2px solid $borderMuted" }}
-            >
+            <Stack.V spacing="2" css={{ borderBottom: "2px solid $borderMuted" }}>
               <Heading size="1" color="muted">
                 Products
               </Heading>
@@ -532,12 +509,7 @@ export const NavMenuMobile = () => {
               >
                 {productOffering.map((l) => (
                   <NextLink href={l.slug} key={l.slug}>
-                    <Stack.H
-                      noShrink
-                      spacing="4"
-                      align="center"
-                      css={{ py: "$3" }}
-                    >
+                    <Stack.H noShrink spacing="4" align="center" css={{ py: "$3" }}>
                       <IconBox
                         size="5"
                         css={{
@@ -552,6 +524,7 @@ export const NavMenuMobile = () => {
                           width={l.width}
                           height={l.height}
                           layout="fixed"
+                          alt=""
                         />
                       </IconBox>
                       <Stack.V spacing="0">
@@ -583,7 +556,7 @@ export const NavMenuMobile = () => {
                   </RowLink>
                 </NextLink>
               ))}
-              {[...links, ...[routes.team, routes.careers]].map((l) => (
+              {[...links, routes.team, routes.careers].map((l) => (
                 <NextLink href={l.slug} key={l.slug}>
                   <RowLink size="2" color="default">
                     {l.label}
@@ -598,11 +571,6 @@ export const NavMenuMobile = () => {
   );
 };
 
-const links = [
-  routes.customers,
-  routes.pricing,
-  routes.ashbyStory,
-  routes.blog,
-];
+const links = [routes.customers, routes.pricing, routes.ashbyStory, routes.blog];
 
 const resourcesLinks = [routes.integrations, routes.support];

@@ -8,17 +8,11 @@ import { Nav } from "../components/Nav/Nav";
 import { Paragraph } from "../components/Primitives/Text";
 import { Box } from "../components/Primitives/Box";
 import { Stack } from "../components/Primitives/Stack";
-import {
-  GradientBackground,
-  PatternBackground,
-} from "../components/Primitives/GradientBackground";
+import { GradientBackground, PatternBackground } from "../components/Primitives/GradientBackground";
 import { Grid } from "../components/Primitives/Grid";
 import { PlatformShowcase } from "../components/Homepage/PlatformShowcase";
 import { CTA } from "../components/CTA";
-import {
-  ProductOffering,
-  productOffering,
-} from "../components/ProductOffering";
+import { ProductOffering, productOffering } from "../components/ProductOffering";
 import { Footer } from "../components/Footer";
 import { HomepageBanner } from "../components/Banner";
 import { BasicMeta } from "../components/meta/BasicMeta";
@@ -68,12 +62,7 @@ const Home = ({
             },
           }}
         >
-          <Tween
-            from={{ autoAlpha: 0 }}
-            duration={0.4}
-            ease="power2.in"
-            position={"start"}
-          >
+          <Tween from={{ autoAlpha: 0 }} duration={0.4} ease="power2.in" position={"start"}>
             <Nav />
           </Tween>
         </Box>
@@ -154,10 +143,9 @@ const Home = ({
                                   willChange: "transform, opacity",
                                 }}
                               >
-                                Unlock <Box as="strong">hiring excellence</Box>{" "}
-                                with Ashby’s <Box as="strong">all-in-one</Box>{" "}
-                                recruiting platform. Empowering ambitious teams
-                                from Seed to IPO.
+                                Unlock <Box as="strong">hiring excellence</Box> with Ashby’s{" "}
+                                <Box as="strong">all-in-one</Box> recruiting platform. Empowering
+                                ambitious teams from Seed to IPO.
                               </Paragraph>
                             </Tween>
                           </Stack.V>
@@ -171,11 +159,7 @@ const Home = ({
               </Section>
               {/* *----------------- Product -----------------* */}
               <Section size="2" css={{ position: "relative" }}>
-                <GradientBackground
-                  color={"primary"}
-                  intensity="low"
-                  position="left"
-                >
+                <GradientBackground color={"primary"} intensity="low" position="left">
                   <PatternBackground />
                 </GradientBackground>
                 <Container
@@ -250,9 +234,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      homepageCustomerQuotes: fetchCustomerQuotesPerLocation(
-        CustomerQuoteLocation.Homepage
-      ),
+      homepageCustomerQuotes: fetchCustomerQuotesPerLocation(CustomerQuoteLocation.Homepage),
       customerProfiles: fetchAllCustomers(),
       allCustomerQuotes: fetchAllCustomerQuotes(),
     },

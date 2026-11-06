@@ -30,7 +30,7 @@ interface ProductFeatureWithText {
 interface Module {
   title: string;
   subtitle?: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   index: number;
 }
 
@@ -42,16 +42,14 @@ export const modules: Module[] = [
   },
   {
     title: "ATS",
-    subtitle:
-      "An ATS that combines ease of use with customizability and automation.",
+    subtitle: "An ATS that combines ease of use with customizability and automation.",
     icon: ATSIcon,
     index: 1,
   },
   {
     title: "Scheduling",
     icon: SchedulingIcon,
-    subtitle:
-      "Improve productivity and candidate experience with scheduling automation.",
+    subtitle: "Improve productivity and candidate experience with scheduling automation.",
     index: 2,
   },
   {
@@ -122,10 +120,7 @@ const MediaContainer = ({ children, css = {} }) => (
   </Box>
 );
 
-export const Layout = Object.assign(
-  {},
-  { Root: _Layout, ContentContainer, MediaContainer }
-);
+export const Layout = Object.assign({}, { Root: _Layout, ContentContainer, MediaContainer });
 
 // *----------------- Header -----------------*
 
@@ -140,7 +135,7 @@ export const Header = ({ title, stats, description }: HeaderProps) => (
     <Heading size="7" css={{ maxWidth: "min(100%, 340px)" }}>
       {title}
     </Heading>
-    {stats && stats}
+    {stats}
     <Paragraph size="3">{description}</Paragraph>
   </Stack.V>
 );

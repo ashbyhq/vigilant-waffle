@@ -1,5 +1,4 @@
 import { styled } from "../../styles/stitches.config";
-import type * as Stitches from "@stitches/react";
 
 export const GradientBackground = styled("div", {
   position: "absolute",

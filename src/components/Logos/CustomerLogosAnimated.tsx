@@ -7,7 +7,6 @@ import { Stack } from "../Primitives/Stack";
 import { Grid } from "../Primitives/Grid";
 import { Box } from "../Primitives/Box";
 import { ChildrenProps } from "../../utils/props";
-import { Image } from "../Primitives/Image";
 import { useCustomerProfiles } from "../Customers/CustomerProfileContext";
 
 interface CustomerLogosAnimatedProps {
@@ -98,18 +97,13 @@ export const CustomerLogosAnimated = ({
             </Paragraph>
           </Tween>
         </Stack.V>
-        <Stack.V
-          spacing="5"
-          css={{ flex: 2.2, "@tablet": { flex: 1.5 } }}
-          justify="between"
-        >
+        <Stack.V spacing="5" css={{ flex: 2.2, "@tablet": { flex: 1.5 } }} justify="between">
           <LogosGrid isGrayScale={isGrayScale} gridSpacing={gridSpacing}>
             <Tween
               from={{
                 autoAlpha: 0,
                 scale: 0.9,
-                onComplete: () =>
-                  appearance === "muted" && setIsGrayScale(true),
+                onComplete: () => appearance === "muted" && setIsGrayScale(true),
               }}
               duration={1}
               position="middle+=0.2"
@@ -180,14 +174,7 @@ const LogosGrid = ({ children, isGrayScale, gridSpacing }: LogosGridProps) => (
  * Lists of slugs from a CustomerProfile
  */
 
-const analyticsLogos = [
-  "notion",
-  "duolingo",
-  "retool",
-  "verkada",
-  "deliveroo",
-  "sequoia",
-];
+const analyticsLogos = ["notion", "duolingo", "retool", "verkada", "deliveroo", "sequoia"];
 
 const allInOneLogos = [
   "replit",

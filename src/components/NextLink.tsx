@@ -22,7 +22,7 @@ const PreserveParams = [
 
 export const NextLink = ({
   children,
-  perserveParams,
+  perserveParams: _perserveParams,
   href,
   css,
   asChild,
@@ -31,9 +31,7 @@ export const NextLink = ({
   const router = useRouter();
   const oldSearchParams = new URLSearchParams(encode(router.query));
 
-  const paramsToPreserve = PreserveParams.filter((param) =>
-    oldSearchParams.has(param)
-  );
+  const paramsToPreserve = PreserveParams.filter((param) => oldSearchParams.has(param));
 
   const calculateTo = () => {
     if (paramsToPreserve.length < 1) {
@@ -49,9 +47,7 @@ export const NextLink = ({
       return href;
     }
 
-    paramsToPreserve.forEach((param) =>
-      newSearchParams.append(param, oldSearchParams.get(param))
-    );
+    paramsToPreserve.forEach((param) => newSearchParams.append(param, oldSearchParams.get(param)));
 
     return `${newHref}?${newSearchParams.toString()}`;
   };

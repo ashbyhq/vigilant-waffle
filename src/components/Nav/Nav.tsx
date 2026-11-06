@@ -80,10 +80,7 @@ export const Nav = React.forwardRef<HTMLDivElement>((props, ref) => {
                 </Button>
               </Box>
               <NextLink href="/request-demo" perserveParams>
-                <Button
-                  appearance={scrolledPastCTA ? "primary" : "default"}
-                  size="3"
-                >
+                <Button appearance={scrolledPastCTA ? "primary" : "default"} size="3">
                   Get In Touch
                 </Button>
               </NextLink>

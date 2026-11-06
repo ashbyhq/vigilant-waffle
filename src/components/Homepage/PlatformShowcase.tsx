@@ -35,19 +35,12 @@ export const PlatformShowcase = () => {
   const nextSlide = () => setCurrentIndex((c) => (c + 1) % featuresList.length);
   const previousSlide = () =>
     setCurrentIndex((c) =>
-      (c - 1) % featuresList.length < 0
-        ? featuresList.length - 1
-        : (c - 1) % featuresList.length
+      (c - 1) % featuresList.length < 0 ? featuresList.length - 1 : (c - 1) % featuresList.length,
     );
 
   return (
     <AnimatePresence>
-      <Tween
-        from={{ autoAlpha: 0 }}
-        position="end"
-        duration={1.5}
-        ease="expo.out"
-      >
+      <Tween from={{ autoAlpha: 0 }} position="end" duration={1.5} ease="expo.out">
         <MotionStackV
           animate={"animate"}
           initial={"initial"}
@@ -159,9 +152,7 @@ const Tab = ({ onClick, isSelected, icon: Icon, title }) => {
 // *----------------- AshbyPlatform -----------------*
 
 const AshbyPlatformContent = () => (
-  <Layout.Root
-    css={{ overflow: "visible", "@tablet": { overflow: "hidden", pb: "$6" } }}
-  >
+  <Layout.Root css={{ overflow: "visible", "@tablet": { overflow: "hidden", pb: "$6" } }}>
     <Layout.ContentContainer>
       <Stack.V spacing="6">
         <Header
@@ -264,9 +255,7 @@ const AshbyPlatformContent = () => (
 
 const ATSContent = () => {
   const customerQuotes = useCustomerQuotes();
-  const quote = customerQuotes.find(
-    (quote) => quote.slug === config.homepage_ats_quote
-  );
+  const quote = customerQuotes.find((quote) => quote.slug === config.homepage_ats_quote);
 
   return (
     <Layout.Root>
@@ -319,9 +308,7 @@ const ATSContent = () => {
 
 const SchedulingContent = () => {
   const customerQuotes = useCustomerQuotes();
-  const quote = customerQuotes.find(
-    (quote) => quote.slug === config.homepage_scheduling_quote
-  );
+  const quote = customerQuotes.find((quote) => quote.slug === config.homepage_scheduling_quote);
 
   return (
     <Layout.Root>
@@ -380,9 +367,7 @@ const SchedulingContent = () => {
 
 const CRMContent = () => {
   const customerQuotes = useCustomerQuotes();
-  const quote = customerQuotes.find(
-    (quote) => quote.slug === config.homepage_crm_quote
-  );
+  const quote = customerQuotes.find((quote) => quote.slug === config.homepage_crm_quote);
 
   return (
     <Layout.Root>
@@ -423,9 +408,7 @@ const CRMContent = () => {
 
 const AnalyticsContent = () => {
   const customerQuotes = useCustomerQuotes();
-  const quote = customerQuotes.find(
-    (quote) => quote.slug === config.homepage_analytics_quote
-  );
+  const quote = customerQuotes.find((quote) => quote.slug === config.homepage_analytics_quote);
 
   return (
     <Layout.Root>
