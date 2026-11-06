@@ -1,47 +1,46 @@
-index: 
+index:
   title: All-in-one Recruiting Software for Ambitious Teams
   description: Ashby’s all-in-one recruiting software consolidates your ATS, Analytics, Scheduling, and CRM
   image: /og/default.png
   url: /
-customers: 
+customers:
   title: Customers
   description: Ashby’s happy customers at some of the fastest growing companies in the world
   image: /og/customers.png
   url: /customers
-integrations: 
+integrations:
   title: Integrations
   description: Ashby integrates with the communication, sourcing, HRIS, assessment tools, and job boards you want to streamline your workflows
   image: /og/integratio.png
   url: /integrations
-startups: 
+startups:
   title: All-in-one Recruiting Software Loved by Startups
   description: Ashby all-in-one recruiting software for startups – everything you need to source, track, engage and convert top talent
   image: /og/startups.png
   url: /startups
-enterprise: 
+enterprise:
   title: All-in-one Recruiting Software for Ambitious Teams
   description: Ashby all-in-one recruiting software for growth and enterprise teams – consolidate your ATS, Analytics, Scheduling, and CRM into a single intuitive solution
   image: /og/enterprise.png
   url: /growth
-analytics: 
+analytics:
   title: Powerful Recruiting Analytics
   description: Ashby Analytics is a powerful data and reporting tool gives you real-time and reliable visibility
   image: /og/analytics.png
   url: /analytics
-requestDemo: 
+requestDemo:
   title: Request Demo
   description: The best all-in-one recruting platform
   url: /request-demo
-story: 
+story:
   title: Story
   description: Ashby customer stories and testimonials
   url: /story
-pricing: 
+pricing:
   title: Pricing
   description: Ashby pricing for our all-in-one recruiting and analytics tool
   url: /pricing
-support: 
+support:
   title: Support
   description: Ashby’s world-class customer success and support teams enable seamless implementations, guide your team on best-practices, and is available to assist with questions.
   url: /support
-

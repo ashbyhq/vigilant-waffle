@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -14,7 +14,7 @@
     <!-- Bug: https://cdn.zappy.app/cc2ffe4b9861832e57f13090cf92544e.mp4 -->
     <!-- Fix: https://github.com/netlify/netlify-cms/issues/5092 -->
     <style>
-      [data-slate-editor] { 
+      [data-slate-editor] {
         -webkit-user-modify: read-write !important;
       }
     </style>
@@ -35,7 +35,7 @@
             { className: "content" },
             h("h1", {}, entry.getIn(["data", "title"])),
             h("time", {}, entry.getIn(["data", "date"])),
-            h("div", {}, this.props.widgetFor("body"))
+            h("div", {}, this.props.widgetFor("body")),
           );
         },
       });

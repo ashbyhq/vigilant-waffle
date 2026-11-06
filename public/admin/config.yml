@@ -74,8 +74,8 @@ collections:
             collection: customer_quotes
             multiple: true
             min: 1
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Homepage ATS tab quote
@@ -83,8 +83,8 @@ collections:
             widget: relation
             collection: customer_quotes
             multiple: false
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Homepage Scheduling tab quote
@@ -92,8 +92,8 @@ collections:
             widget: relation
             collection: customer_quotes
             multiple: false
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Homepage CRM tab quote
@@ -101,8 +101,8 @@ collections:
             widget: relation
             collection: customer_quotes
             multiple: false
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Homepage Analytics tab quote
@@ -110,8 +110,8 @@ collections:
             widget: relation
             collection: customer_quotes
             multiple: false
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Pricing page quotes order
@@ -120,8 +120,8 @@ collections:
             collection: customer_quotes
             multiple: true
             min: 1
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Request demo page quote
@@ -129,8 +129,8 @@ collections:
             widget: relation
             collection: customer_quotes
             multiple: false
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Customers page quotes order
@@ -139,8 +139,8 @@ collections:
             collection: customer_quotes
             multiple: true
             min: 1
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
           - label: Growth page, customer success quote
@@ -149,8 +149,8 @@ collections:
             collection: customer_quotes
             multiple: false
             min: 1
-            search_fields: [ slug ]
-            display_fields: [ slug ]
+            search_fields: [slug]
+            display_fields: [slug]
             value_field: slug
             required: false
   - name: employees
@@ -445,7 +445,7 @@ collections:
           - label: feature
             name: Feature
             widget: list
-            fields: 
+            fields:
               - label: Category
                 name: category
                 widget: select
@@ -495,7 +495,7 @@ collections:
     summary: "{{name}}"
     editor:
       preview: false
-    fields: 
+    fields:
       - label: Slug
         name: slug
         widget: string
@@ -531,7 +531,7 @@ collections:
         widget: object
         collapsed: true
         required: false
-        fields: 
+        fields:
           - label: URL
             name: url
             widget: string

@@ -7,9 +7,7 @@ export const useCustomerQuotes = () => {
   const quotes = useContext(CustomerQuoteContext);
 
   if (quotes == null) {
-    throw new Error(
-      "useCustomerQuotes must be used within a CustomerQuoteContext.Provider"
-    );
+    throw new Error("useCustomerQuotes must be used within a CustomerQuoteContext.Provider");
   }
 
   return quotes;

@@ -7,9 +7,7 @@ import { Image } from "./Primitives/Image";
 import { Stack } from "./Primitives/Stack";
 import { Paragraph } from "./Primitives/Text";
 
-function isCustomerQuote(
-  quote: CustomerQuote
-): quote is CustomerQuote {
+function isCustomerQuote(quote: CustomerQuote): quote is CustomerQuote {
   return (quote as CustomerQuote).slug !== undefined;
 }
 
@@ -26,9 +24,7 @@ interface NormalizedQuote {
   };
 }
 
-type QuoteProps = { className?: string } & (
-  | CustomerQuote
-);
+type QuoteProps = { className?: string } & CustomerQuote;
 
 const normalize = (quote: CustomerQuote): NormalizedQuote => {
   const normalizedQuote = {
@@ -53,12 +49,7 @@ export const FeaturedQuote = ({ className, ...quote }: QuoteProps) => {
   const normalizedQuote = normalize(quote);
 
   return (
-    <Stack.V
-      className={className}
-      spacing="5"
-      align="center"
-      css={{ ta: "center" }}
-    >
+    <Stack.V className={className} spacing="5" align="center" css={{ ta: "center" }}>
       <IconBox
         size="5"
         appearance={"avatar"}
@@ -87,9 +78,7 @@ export const FeaturedQuote = ({ className, ...quote }: QuoteProps) => {
           <Heading size="3">{normalizedQuote.author.name}</Heading>
           <Heading size="3" color="muted">
             {normalizedQuote.author.title}{" "}
-            {normalizedQuote.company
-              ? `at ${normalizedQuote.company.name}`
-              : null}
+            {normalizedQuote.company ? `at ${normalizedQuote.company.name}` : null}
           </Heading>
         </Box>
         {normalizedQuote.company.logo && (
@@ -119,7 +108,7 @@ export const Quote = ({
   const normalizedQuote = normalize(quote);
 
   return (
-    <Stack.V spacing="4">
+    <Stack.V className={className} spacing="4">
       <Paragraph size={size === "default" ? "4" : "3"} color={color}>
         ”{normalizedQuote.text}”
       </Paragraph>
@@ -138,17 +127,14 @@ export const Quote = ({
               width={100}
               height={100}
               layout="responsive"
+              alt=""
             />
           </IconBox>
           <Box>
-            <Heading size={size === "default" ? "3" : 2}>
-              {normalizedQuote.author.name}
-            </Heading>
+            <Heading size={size === "default" ? "3" : 2}>{normalizedQuote.author.name}</Heading>
             <Heading size={size === "default" ? "3" : 2} color="muted">
               {normalizedQuote.author.title}{" "}
-              {normalizedQuote.company
-                ? `at ${normalizedQuote.company.name}`
-                : null}
+              {normalizedQuote.company ? `at ${normalizedQuote.company.name}` : null}
             </Heading>
           </Box>
         </Stack.H>

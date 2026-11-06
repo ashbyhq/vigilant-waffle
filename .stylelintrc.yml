@@ -1,0 +1,18 @@
+extends:
+  - stylelint-config-standard-scss
+ignoreFiles:
+  - dist/**
+  - .next/**
+  - out/**
+plugins:
+  - stylelint-order
+rules:
+  custom-property-pattern: ^[a-z][a-zA-Z0-9]*$
+  scss/dollar-variable-pattern: ^[a-z][a-zA-Z0-9]*$
+  scss/at-mixin-pattern: ^[a-z][a-zA-Z0-9]*$
+  selector-id-pattern: ^(__next|root)$
+  value-keyword-case:
+    - lower
+    - ignoreProperties:
+        - font-family
+        - text-rendering

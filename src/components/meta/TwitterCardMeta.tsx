@@ -5,9 +5,7 @@ type TwitterCardMetaProps = {
   authorTwitterAccount?: string;
 };
 
-export function TwitterCardMeta({
-  authorTwitterAccount,
-}: TwitterCardMetaProps) {
+export function TwitterCardMeta({ authorTwitterAccount }: TwitterCardMetaProps) {
   return (
     <Head>
       <meta property="twitter:card" content="summary_large_image" />

@@ -3,10 +3,7 @@ import { CSS } from "@stitches/react";
 import { Section, Container } from "./Primitives/Container";
 import { NextLink } from "./NextLink";
 import { Box } from "./Primitives/Box";
-import {
-  GradientBackground,
-  PatternBackground,
-} from "./Primitives/GradientBackground";
+import { GradientBackground, PatternBackground } from "./Primitives/GradientBackground";
 import { Grid } from "./Primitives/Grid";
 import { Heading } from "./Primitives/Heading";
 import { Link } from "./Primitives/Link";
@@ -47,11 +44,7 @@ export const HiringExcellence = ({ inStory }: { inStory?: boolean }) => {
   return (
     <Box css={inStory ? { maxWidth: "100vw" } : {}}>
       <Section size="2" css={{ position: "relative" }}>
-        <GradientBackground
-          color="primaryToPink"
-          intensity="low"
-          position="left"
-        >
+        <GradientBackground color="primaryToPink" intensity="low" position="left">
           <PatternBackground />
         </GradientBackground>
         <Container
@@ -61,8 +54,7 @@ export const HiringExcellence = ({ inStory }: { inStory?: boolean }) => {
             background: "$white",
             padding: "clamp($6, 5vw, 72px)",
             borderRadius: "$4",
-            boxShadow:
-              "0px 0px 1px rgb(20 20 21 / 12%), 0px 2px 36px -25px rgb(14 14 40 / 20%)",
+            boxShadow: "0px 0px 1px rgb(20 20 21 / 12%), 0px 2px 36px -25px rgb(14 14 40 / 20%)",
             "@tablet": {
               borderRadius: 0,
             },
@@ -75,10 +67,9 @@ export const HiringExcellence = ({ inStory }: { inStory?: boolean }) => {
                 How Ashby enables hiring excellence
               </Heading>
               <Paragraph>
-                Hiring has changed and so should your tools. Companies that
-                excel at hiring have a strategic advantage. Our approach to
-                building Ashby centers around ambitious teams that question the
-                status quo:
+                Hiring has changed and so should your tools. Companies that excel at hiring have a
+                strategic advantage. Our approach to building Ashby centers around ambitious teams
+                that question the status quo:
               </Paragraph>
             </Stack.V>
             <Box
@@ -134,12 +125,7 @@ export const HiringExcellence = ({ inStory }: { inStory?: boolean }) => {
                 }}
               >
                 <NextLink href="/story" asChild>
-                  <Link
-                    color="primary"
-                    size="3"
-                    spacing="4"
-                    iconAfter={ArrowRightIcon}
-                  >
+                  <Link color="primary" size="3" spacing="4" iconAfter={ArrowRightIcon}>
                     Read Our Story
                   </Link>
                 </NextLink>

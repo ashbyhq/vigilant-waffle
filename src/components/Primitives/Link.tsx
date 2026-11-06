@@ -64,15 +64,8 @@ type LinkProps = {
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    {
-      children,
-      iconAfter: IconAfter,
-      iconBefore: IconBefore,
-      isExternal,
-      spacing = "2",
-      ...rest
-    },
-    ref
+    { children, iconAfter: IconAfter, iconBefore: IconBefore, isExternal, spacing = "2", ...rest },
+    ref,
   ) => {
     const externalLinkAttributes = isExternal
       ? {
@@ -98,5 +91,5 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
         </Stack.H>
       </StyledLink>
     );
-  }
+  },
 );

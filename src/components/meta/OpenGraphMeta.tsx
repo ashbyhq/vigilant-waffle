@@ -7,20 +7,12 @@ type OpenGraphMetaProps = {
   description?: string;
   image?: string;
 };
-export function OpenGraphMeta({
-  url,
-  title,
-  description,
-  image,
-}: OpenGraphMetaProps) {
+export function OpenGraphMeta({ url, title, description, image }: OpenGraphMetaProps) {
   return (
     <Head>
       <meta property="og:site_name" content={config.site_title} />
       <meta property="og:url" content={config.base_url + url} />
-      <meta
-        property="og:title"
-        content={title ? [title, config.site_title].join(" | ") : ""}
-      />
+      <meta property="og:title" content={title ? [title, config.site_title].join(" | ") : ""} />
       <meta
         property="og:description"
         content={description ? description : config.site_description}

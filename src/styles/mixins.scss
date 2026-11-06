@@ -25,9 +25,7 @@ $twoColumnMinWidth: 980px;
 @mixin flexType($isBlock: false) {
   @if $isBlock {
     display: flex;
-  }
-
-  @else {
+  } @else {
     display: inline-flex;
   }
 }
